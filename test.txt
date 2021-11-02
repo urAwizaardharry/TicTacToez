@@ -1,1 +1,7 @@
-coucou
+Explication git:
+
+git add .
+
+git commit -m "explication de la modification"
+
+git push
