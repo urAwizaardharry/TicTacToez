@@ -8,6 +8,7 @@ Created on Thu Oct 21 13:55:44 2021
 
 
 import pygame
+import sys
 
 jeu = {}
 jeu["1"] = "0"
@@ -154,6 +155,8 @@ def pose_map(w,l,taille, jeu):
     """
     position = int(input("choisis une position pas prise de 1 à 9 inclus "))
     equipe = int(input('Quelle est ton équipe?'))
+    #while equipe != 1 or equipe != 2:
+    #    equipe = int(input('Quelle est ton équipe?'))
     x = 0
     jeu = pose(jeu, equipe, position)
     position = position - 1
@@ -230,6 +233,7 @@ while run :
 empty = pygame.Color(0,0,0,0)
 surf.fill(empty)
 pygame.quit()
+sys.exit()
 
 
 
