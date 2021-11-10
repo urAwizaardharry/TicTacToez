@@ -92,7 +92,7 @@ class jeu:
         self.player_O = 'O'
         self.turn = 0
     
-    def fonction_principale(self):
+    def fonction_principale(self,start):
         stop = False
         self.ecran.fill((240,240,240))
         pygame.display.set_caption('Morpion')
@@ -181,8 +181,10 @@ class jeu:
 
                         victoire = True
                         status = 'O'
+                    print(lst_ligne_O)
+                    print(lst_colonne_O)
                     if lst_ligne_O == lst_colonne_O or lst_ligne_O == lst_colonne_O[::-1]:
-
+                        self.grille.print_grid()
                         victoire = True
                         status = 'O'
                 
@@ -190,19 +192,19 @@ class jeu:
             self.grille.afficher()
             pygame.display.flip()
             if victoire == True:
-                time.sleep(2)
+                time.sleep(1)
                 self.jeu_encours = False
             elif self.turn == taille*taille:
-                time.sleep(2)
+                time.sleep(1)
                 self.jeu_encours = False
                 status = 'egalite'
         return(status)
 
 
-def new_game():
+def new_game(start):
     if __name__ == "__main__":
         pygame.init()
-        status = jeu().fonction_principale()
+        status = jeu().fonction_principale(start)
         pygame.quit()
     return status
     
@@ -215,7 +217,10 @@ def new_game():
 def inter_game(w,l, turn, status):
     game = True
     ecran = pygame.display.set_mode((w,l))
-    
+    if turn %2 ==0:
+        start = 'x'
+    else: 
+        start = 'o'
     turn = str(turn)
     O, X = status
     O = str(O)
@@ -282,7 +287,7 @@ def inter_game(w,l, turn, status):
             
                 if posX >= 3 and posX <= 5 and posY == 5:
                     
-                    return new_game()
+                    return new_game(start)
 
 def init_game(w,l):
     game = True
